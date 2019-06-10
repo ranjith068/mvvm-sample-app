@@ -1,13 +1,6 @@
 package com.example.test.mvvmsampleapp.view.ui;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleFragment;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +17,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class ProjectListFragment extends LifecycleFragment  implements Injectable {
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+
+public class ProjectListFragment extends Fragment implements Injectable {
     public static final String TAG = "ProjectListFragment";
     private ProjectAdapter projectAdapter;
     private FragmentProjectListBinding binding;
@@ -42,7 +43,7 @@ public class ProjectListFragment extends LifecycleFragment  implements Injectabl
         binding.projectList.setAdapter(projectAdapter);
         binding.setIsLoading(true);
 
-        return binding.getRoot();
+        return (View) binding.getRoot();
     }
 
     @Override
